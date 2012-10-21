@@ -1,4 +1,4 @@
-class sneezingdog-dns{
+class sneezingdog_dns{
   include dnsmasq
 
   dnsmasq::address{
