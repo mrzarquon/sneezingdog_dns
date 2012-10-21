@@ -1,31 +1,8 @@
 class sneezingdog-dns{
-  include dns::server
+  include dnsmasq
 
-  dns::zone { 'sneezingdog.lan':
-    soa         => "ns1.sneezingdog.lan",
-    soa_email   => "admin.sneezingdog.lan",
-    nameservers => ["ns1"],
+  dnsmasq::address{
+    "10.234.56.7": names => ['bender.sneezingdog.lan'];
+    "10.234.56.8": names => ['farnsworth.sneezingdog.lan'];
   }
-  dns::zone { '56.234.10.IN-ADDR.ARPA':
-  soa         => "ns1.example.com",
-  soa_email   => 'admin.example.com',
-  nameservers => ["ns1"]
-}
-  dns::record::a {
-    'bender':
-      zone => 'sneezingdog.lan',
-      data => ['10.234.56.7'],
-      ptr  => true;
-    'farnsworth':
-      zone => 'sneezingdog.lan',
-      data => ['10.234.56.8'],
-      ptr  => true;
-  }
-  
-
-
-
-
-
-
 }
